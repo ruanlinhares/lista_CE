@@ -11,24 +11,29 @@ int main(){
     scanf("%d", &altura);
 
     if(altura >= 2 && altura <= 50){
+        
         topo = base + (altura - 1);
         
-        for(i = 0; i <= base; i++){
+        for(i = 0; i < altura; i++){
 
-            for(j = i; j <= altura; j++){
+            for(j = 0; j <= i; j++){
                 
-                if(j == altura){
-                    for(k = altura; k == 1; k--){
-                        printf("%d ", topo - 1);
-                        i++;
-                    }
-                }
-                
-                printf("%d ", base + i);    
+                printf("%d ", base + j);    
                 
             }
 
+            printf("\n");
+        }
+
+        for(i = (altura - 1 ); i == 0 ; i--){
             
+            for(j = i; j == 0; j--){
+                
+                printf("%d ", topo - j);    
+                
+            }
+
+            printf("\n");
         }
 
     }else{printf("\nAltura invalida!\n");}

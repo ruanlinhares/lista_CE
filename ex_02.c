@@ -31,13 +31,15 @@ int main(){
                 printf("Digite o valor do saque:\n");
                 scanf("%f", &valor_saque);
 
-                if(saldo > 0){
-                    if(valor_saque >= 0){
+                if(valor_saque > 0){
+                    if(valor_saque <= saldo){
                         saldo = saldo - valor_saque;    
                     }else{
                         printf("Valor invalido, somente valores positivos\n");
                     }
-                }else{printf("Saldo insuficiente, saque negado!\n");}
+                }
+                
+                if(valor_saque < 0){printf("Saldo insuficiente, saque negado!\n");}
 
                 break;
             case 3:

@@ -11,32 +11,69 @@ int main(){
         scanf("%d",&valor);
 
         if(valor > 0){
+            
+            while(valor > 0){
+
+                if(valor % 1 == 0){
+                    
+                    while(valor >= 100){
+                        notas_100 += 1;
+                        valor = valor - 100;                        
+                    }
+
+                    while(valor >= 50){
+                        notas_50 += 1;
+                        valor = valor - 50;                        
+                    }
+
+                    while(valor >= 20){
+                        notas_20 += 1;
+                        valor = valor - 20;           
+                    }
+
+                    while(valor >= 10){
+                        notas_10 += 1;
+                        valor = valor - 10;                        
+                    }
+
+                    while(valor >= 5){
+                        notas_5 += 1;
+                        valor = valor - 5;                        
+                    }
+
+                    while(valor >= 1){
+                        notas_1 += 1;
+                        valor = valor - 1;                        
+                    }
+                }
+            }
 
             
-            if(valor % 1 == 0){
-                notas_100 = notas_100 + (valor/100);
-                valor = valor - (notas_100*100);
-            }
-            if(valor % 1 == 0){
-                notas_50 = notas_50 + (valor/50);
-                valor = valor - (notas_50*50);
-            }
-            if(valor % 1 == 0){
-                notas_20 = notas_20 + (valor/20);
-                valor = valor - (notas_20*20);
-            }
-            if(valor % 1 == 0){
-                notas_10 = notas_10 + (valor/10);
-                valor = valor - (notas_10*10);
-            }
-            if(valor % 1 == 0){
-                notas_5 = notas_5 + (valor/5);
-                valor = valor - (notas_5*5);
-            }
-            if(valor % 1 == 0){
-                notas_1 = notas_1 + (valor/1);
-                valor = valor - (notas_1);
-            }
+            // if(valor % 1 == 0){
+            //     notas_100 = notas_100 + (valor/100);
+            //     valor = valor - (notas_100*100);
+            // }
+
+            // if(valor % 1 == 0){
+            //     notas_50 = notas_50 + (valor/50);
+            //     valor = valor - (notas_50*50);
+            // }
+            // if(valor % 1 == 0){
+            //     notas_20 = notas_20 + (valor/20);
+            //     valor = valor - (notas_20*20);
+            // }
+            // if(valor % 1 == 0){
+            //     notas_10 = notas_10 + (valor/10);
+            //     valor = valor - (notas_10*10);
+            // }
+            // if(valor % 1 == 0){
+            //     notas_5 = notas_5 + (valor/5);
+            //     valor = valor - (notas_5*5);
+            // }
+            // if(valor % 1 == 0){
+            //     notas_1 = notas_1 + (valor/1);
+            //     valor = valor - (notas_1);
+            // }
 
             printf("Valor em notas de 100: %d\n", notas_100);
             printf("Valor em notas de 50: %d\n", notas_50);

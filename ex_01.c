@@ -47,11 +47,11 @@ int main(){
             percent4 = (nota4*100)/total;
             percent5 = (nota5*100)/total;
 
-            printf("Nota 1: %f\n", percent1);
-            printf("Nota 2: %f\n", percent2);
-            printf("Nota 3: %f\n", percent3);
-            printf("Nota 4: %f\n", percent4);    
-            printf("Nota 5: %f\n", percent5);
+            printf("Nota 1: %.2f\n", percent1);
+            printf("Nota 2: %.2f\n", percent2);
+            printf("Nota 3: %.2f\n", percent3);
+            printf("Nota 4: %.2f\n", percent4);    
+            printf("Nota 5: %.2f\n", percent5);
             printf("Total de participantes: %d", total);
 
         }else{total = total + 1;}

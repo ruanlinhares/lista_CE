@@ -2,7 +2,7 @@
 
 int main(){
 
-    int i, j, maior, valor, x[10], y[10];
+    int i, j, maior, valor, x[10], y[10], repete = 0;
 
     for(i = 0; i < 10; i++){
         printf("Digite os valores:\n");
@@ -12,37 +12,44 @@ int main(){
     }
 
     for(i = 0; i < 10; i++){
-        printf("%d\n", x[i]);
+        printf("[%d] ", x[i]);
     }
 
     for(i = 0; i < 10; i++){
-
         for(j = 0; j < 10; j++){
             if(x[i] == x[j]){
-                y[i] = y[i] + 1;            
-            }else{
-                y[i] = 0;
+                repete +=1;
             }
         }
+
+        if(repete > 1){
+            y[i] = repete;
+        }else{
+            y[i] = 0;
+        }
+
+        repete = 0;
         
     }
 
     for(i = 0; i < 10; i++){
-        printf("Valor: %d - Numero de repeticoes: %d\n", x[i], y[i]);
+        if(y[i] > 0){
+            printf("\nValor: %d - Numero de repeticoes: %d\n", x[i], y[i]);    
+        }
     }
 
     maior = y[0];
 
     for(i = 0; i < 10; i++){
-
-        if(i == (10 - 1)){
-            if(y[i] > maior){maior = y[i];}
-        }else{
-            if(y[i] > maior){maior = y[i];}
-        }
+        if(y[i] >= maior){maior = y[i];}
     }
 
+    for(j = 0; j < 10; j++){
+        if(y[j] == maior){
+            printf("\nO valor[es] que mais se repeti[ram]: %d\n", x[j]);
+        }
+    }
     
-    printf("O valor que mais se repetiu foi: %d\n", maior);
+    return 0;
 
 }

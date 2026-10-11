@@ -1,66 +1,83 @@
 #include <stdio.h>
 
-int main(){
+int main()
+{
 
     int cadeiras[5][8] = {
-        {1,1,1,0,1,1,1,1},
-        {1,1,0,0,0,0,0,1},
-        {0,1,0,0,1,0,0,0},
-        {1,1,0,0,1,1,0,0},
-        {0,1,1,0,0,1,0,1},
+        {1, 1, 1, 0, 1, 1, 1, 1},
+        {1, 1, 0, 1, 0, 0, 0, 1},
+        {1, 1, 0, 0, 1, 0, 0, 0},
+        {1, 1, 1, 1, 1, 1, 1, 1},
+        {1, 1, 0, 0, 0, 1, 1, 1},
     };
 
-    int fila[5] = {0}
-    int assentos,i,j;
+    int fila[5] = {0};
+    int consecutivos = 0;
+    int assentos, i, j, k, inicio_atual = 0, encontrado = 0, fileira_encontrada = -1, intervalo_inicial = -1, intervalo_final = -1;
 
-    print("Digite quantos assentos juntos deseja reservar:\n");
-    scanf("%d" &assentos);
+    printf("Digite quantos assentos juntos deseja reservar:\n");
+    scanf("%d", &assentos);
 
+    if (assentos < 2)
+    {
+        printf("\nNumero de acentos invalido. Acentos a partir de 2 lugares.\n");
+    }
 
-    if(assentos > 2){
-        for(i = 0; i < 5; i++){
+    for (i = 0; i < 5; i++)
+    {
 
-            for(j = 0; j < 8; j++){
+        for (j = 0; j < 8; j++)
+        {
 
-                int consecutivos[8] = {0}
-
-                if(cadeiras[i][j] == 0 && cadeiras[i][j + 1] == 0 && cadeiras[i][j + 1] !=0){
-                    consecutivos[i] += 1;
+            if (cadeiras[i][j] == 0)
+            {
+                if (consecutivos == 0)
+                {
+                    inicio_atual = j;
                 }
 
-                if(cadeiras[i][j] == 0 && cadeiras[i][j - 1] == 0 && cadeiras[i][j + 1] != 0){
-                    consecutivos[i] += 1;
-                }
+                consecutivos += 1;
 
-                if(cadeiras[i][j] == 0 && cadeiras[i][j - 1] == 0 && cadeiras[i][j + 1] == 0){
-                    consecutivos[i] += 1;
-                }
-
-                    
-            }
-        }
-
-        for(i = 0; i < 5; i++){
-
-            for(j = 0; j < 8; j++){
-                if(consecutivos[i] == assentos){
-                    if(cadeiras[i][j] == 0){
-                        cadeiras[i][j] = 1;
-                    }
-
-                    printf("Fileira %d\n", i + 1);
-                    printf("Assentos reservados:\n");
-                    printf("[%d] ", );
-                    break;
-                }else{
-                    printf("\nDesculpe, nao ha assentos continuos suficientes.\n");
+                if (consecutivos == assentos)
+                {
+                    encontrado = 1;
+                    fileira_encontrada = i;
+                    intervalo_inicial = inicio_atual;
+                    intervalo_final = j;
                     break;
                 }
             }
-        
+            else
+            {
+                consecutivos = 0;
+            }
         }
-        
-    }else{printf("\nNumero de acentos invalido. Acentos a partir de 2 lugares.\n");}
+    }
+
+    if (encontrado == 1)
+    {
+
+        for (i = intervalo_inicial; i <= intervalo_final; i++)
+        {
+            if (cadeiras[fileira_encontrada][i] == 0)
+            {
+                cadeiras[fileira_encontrada][i] = 1;
+            }
+        }
+
+        printf("Reserva realizada com sucesso!!\n");
+        printf("Fileira %d\n", fileira_encontrada + 1);
+        printf("Assentos reservados:\n");
+
+        for (j = intervalo_inicial; j <= intervalo_final; j++)
+        {
+            printf("[%d] ", j + 1);
+        }
+    }
+    else
+    {
+        printf("\nDesculpe, nao ha assentos continuos suficientes.\n");
+    }
 
     return 0;
 }
